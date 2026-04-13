@@ -10,6 +10,15 @@ if ! zgenom saved; then
     
     zgenom compdef
 
+    zgenom ohmyzsh
+    zgenom ohmyzsh plugins/git
+    zgenom ohmyzsh plugins/starship
+    zgenom ohmyzsh plugins/pipenv
+    zgenom ohmyzsh plugins/dotenv
+    zgenom ohmyzsh plugins/fzf
+    zgenom ohmyzsh plugins/man
+    zgenom ohmyzsh plugins/sudo
+
     zgenom load "$HOME/.zsh_user/opts.zsh"
     zgenom load "$HOME/.zsh_user/alias.zsh"
     zgenom load "$HOME/.zsh_user/tmux.zsh"
@@ -21,17 +30,6 @@ if ! zgenom saved; then
     zgenom load "$HOME/.zsh_user/pyenv.zsh"
     zgenom load "$HOME/.zsh_user/yadm.zsh"
     zgenom load "$HOME/.zsh_user/blender.zsh"
-
-
-    zgenom ohmyzsh
-    zgenom ohmyzsh plugins/git
-    zgenom ohmyzsh plugins/starship
-    zgenom ohmyzsh plugins/pipenv
-    zgenom ohmyzsh plugins/dotenv
-    zgenom ohmyzsh plugins/fzf
-    zgenom ohmyzsh plugins/man
-    zgenom ohmyzsh plugins/sudo
-
 
     zgenom load zsh-users/zsh-completions
     zgenom load zsh-users/zsh-syntax-highlighting
