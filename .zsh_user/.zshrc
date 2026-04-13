@@ -1,43 +1,48 @@
-# load zgenom
-source "${HOME}/.zgenom/zgenom.zsh"
+setopt promptsubst
 
-# Check for plugin and zgenom updates every 3 days
-zgenom autoupdate 3
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
 
-# if the init script doesn't exist
-if ! zgenom saved; then
-    echo "Creating a zgenom save"
-    
-    zgenom compdef
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" \
+      zdharma-continuum/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start" \
+      zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+      zsh-users/zsh-completions
 
-    zgenom ohmyzsh
-    zgenom ohmyzsh plugins/git
-    zgenom ohmyzsh plugins/starship
-    zgenom ohmyzsh plugins/pipenv
-    zgenom ohmyzsh plugins/dotenv
-    zgenom ohmyzsh plugins/fzf
-    zgenom ohmyzsh plugins/man
-    zgenom ohmyzsh plugins/sudo
+zinit wait lucid for \
+        OMZL::git.zsh \
+        OMZL::clipboard.zsh \
+        OMZL::functions.zsh \
+        OMZL::history.zsh \
+        OMZL::termsupport.zsh \
+        OMZL::key-bindings.zsh \
+        OMZL::directories.zsh \
+        OMZP::git \
+        OMZP::pipenv \
+        OMZP::fzf \
+        OMZP::dotenv \
+        OMZP::man \
+        OMZP::sudo
 
-    zgenom load "$HOME/.zsh_user/opts.zsh"
-    zgenom load "$HOME/.zsh_user/alias.zsh"
-    zgenom load "$HOME/.zsh_user/tmux.zsh"
-    zgenom load "$HOME/.zsh_user/conf_files.zsh"
-    zgenom load "$HOME/.zsh_user/lf.zsh"
-    zgenom load "$HOME/.zsh_user/exa.zsh"
-    zgenom load "$HOME/.zsh_user/nvm.zsh"
-    zgenom load "$HOME/.zsh_user/pnpm.zsh"
-    zgenom load "$HOME/.zsh_user/pyenv.zsh"
-    zgenom load "$HOME/.zsh_user/yadm.zsh"
-    zgenom load "$HOME/.zsh_user/blender.zsh"
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
 
-    zgenom load zsh-users/zsh-completions
-    zgenom load zsh-users/zsh-syntax-highlighting
-    zgenom load zsh-users/zsh-autosuggestions
-
-    zgenom load "${HOME}/.zfunc"
-
-    zgenom save
-    zgenom compile "$HOME/.zshrc"
-fi
+zinit snippet "$HOME/.zsh_user/opts.zsh"
+zinit wait lucid for \
+    is-snippet "$HOME/.zsh_user/alias.zsh" \
+    is-snippet "$HOME/.zsh_user/tmux.zsh" \
+    is-snippet "$HOME/.zsh_user/conf_files.zsh" \
+    is-snippet "$HOME/.zsh_user/lf.zsh" \
+    is-snippet "$HOME/.zsh_user/exa.zsh" \
+    is-snippet "$HOME/.zsh_user/nvm.zsh" \
+    is-snippet "$HOME/.zsh_user/pnpm.zsh" \
+    is-snippet "$HOME/.zsh_user/pyenv.zsh" \
+    is-snippet "$HOME/.zsh_user/yadm.zsh" \
+    is-snippet "$HOME/.zsh_user/blender.zsh" \
 
