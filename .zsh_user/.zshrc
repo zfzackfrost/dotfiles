@@ -21,7 +21,6 @@ if ! zgenom saved; then
     zgenom load "$HOME/.zsh_user/pyenv.zsh"
     zgenom load "$HOME/.zsh_user/yadm.zsh"
     zgenom load "$HOME/.zsh_user/blender.zsh"
-    zgenom load "$HOME/.zsh_user/bash_complete/tio.sh"
 
 
     zgenom ohmyzsh
@@ -30,7 +29,6 @@ if ! zgenom saved; then
     zgenom ohmyzsh plugins/pipenv
     zgenom ohmyzsh plugins/dotenv
     zgenom ohmyzsh plugins/fzf
-    zgenom ohmyzsh plugins/tldr
     zgenom ohmyzsh plugins/man
     zgenom ohmyzsh plugins/sudo
 
