@@ -1,0 +1,15 @@
+session_name: "$TMUXP_WORKSPACE_NAME"
+start_directory: "$TMUXP_START_DIR"
+windows:
+  - focus: true
+    panes:
+      - nvim $TMUXP_START_FILE
+    window_name: editor
+  - layout: even-horizontal
+    panes:
+      - focus: true
+      -
+    window_name: term
+  - panes:
+      - lf
+    window_name: files
