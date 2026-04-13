@@ -241,14 +241,12 @@ alias ywt='yadm worktree'
 alias ywtls='yadm worktree list'
 alias ywtmv='yadm worktree move'
 alias ywtrm='yadm worktree remove'
-ytl(){ yadm tag --sort=-v:refname -n --list ${1}\* }; noglob gtl
 
 function ygu() {
   local b
   [[ $# != 1 ]] && b="$(git_current_branch)"
   yadm pull --rebase origin "${b:-$1}"
 }
-compdef _git ggu=git-pull
 
 
 function ygl() {
@@ -260,4 +258,3 @@ function ygl() {
     git pull origin "${b:-$1}"
   fi
 }
-compdef _git ygl=git-pull
