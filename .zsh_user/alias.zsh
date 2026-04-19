@@ -8,14 +8,9 @@ alias nvim="$USER_APPS_DIR/nvim.appimage"
 # ========================= Shortcuts ========================
 # ============================================================
 
-# --------------- Arch --------------
-alias sysclean='yay -Yc && sudo pacman -Scc'
-
 # --------------- ZSH ---------------
-alias zg='zgenom'
-alias zgr='zgenom reset'
+alias ziu='zinit update'
 alias resh='clear; exec zsh'
-alias zgresh='zgenom reset; clear; exec zsh'
 
 # --------------- Pnpm --------------
 alias pn='pnpm'
