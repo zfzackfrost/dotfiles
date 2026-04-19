@@ -1,0 +1,10 @@
+[[rule]]
+include = ["**/Cargo.toml"]
+
+[[rule]]
+include = [".config/starship.toml"]
+
+[[rule]]
+include = [".taplo.toml"]
+[[rule.schema]]
+path = "taplo://taplo.toml"
