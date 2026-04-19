@@ -1,5 +1,5 @@
 echo ${BLENDER_VERSION_CUR:=5.1} &> /dev/null
-echo ${BLENDER_VERSION_PRE:=5.1} &> /dev/null
+echo ${BLENDER_VERSION_PRE:=5.2} &> /dev/null
 echo ${BLENDER_VERSION_API:=$BLENDER_VERSION_CUR} &> /dev/null
 
 function _print_blender_dir(){
@@ -8,6 +8,6 @@ function _print_blender_dir(){
     echo $blend_dirs[1]
 }
 
-alias blender="WAYLAND_DISPLAY='' $(_print_blender_dir)/blender"
-alias blender_pre="WAYLAND_DISPLAY='' $(_print_blender_dir $BLENDER_VERSION_PRE)/blender"
+alias blender="WAYLAND_DISPLAY='' $(_print_blender_dir)/blender-launcher"
+alias blender_pre="WAYLAND_DISPLAY='' $(_print_blender_dir $BLENDER_VERSION_PRE)/blender-launcher"
 pythonpath+=("$(_print_blender_dir $BLENDER_VERSION_API)/$BLENDER_VERSION_API/scripts/modules")
