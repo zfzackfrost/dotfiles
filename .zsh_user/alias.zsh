@@ -8,6 +8,9 @@ alias nvim="$USER_APPS_DIR/nvim.appimage"
 # ========================= Shortcuts ========================
 # ============================================================
 
+# -------------- Misc ---------------
+alias fdh='fd --no-ignore --hidden'
+
 # --------------- ZSH ---------------
 alias ziu='zinit update'
 alias resh='clear; exec zsh'
