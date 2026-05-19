@@ -10,6 +10,7 @@ alias nvim="$USER_APPS_DIR/nvim.appimage"
 
 # -------------- Misc ---------------
 alias fdh='fd --no-ignore --hidden'
+alias _="sudo"
 
 # --------------- ZSH ---------------
 alias ziu='zinit update'

@@ -14,6 +14,9 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 # ====================== Early Config ======================
 
+zinit ice as"completion"
+zinit light "$HOME/.zfunc"
+
 zinit snippet OMZL::history.zsh
 zinit snippet "$HOME/.zsh_user/alias.zsh"
 zinit snippet "$HOME/.zsh_user/opts.zsh"
@@ -28,11 +31,11 @@ zinit wait lucid for \
         OMZL::key-bindings.zsh \
         OMZL::directories.zsh \
         OMZP::git \
-        OMZP::pipenv \
         OMZP::fzf \
         OMZP::dotenv \
         OMZP::man \
-        OMZP::sudo
+        OMZP::sudo \
+        is-snippet "$HOME/.zsh_user/pipenv.zsh"
 
 
 # ==================== Starship Prompt =====================
@@ -59,10 +62,13 @@ zinit wait lucid for \
 # ====================== Core Plugins ======================
 
 zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \
+  atinit"zicompinit; zicdreplay" reset-prompt \
       zdharma-continuum/fast-syntax-highlighting \
-  atload"_zsh_autosuggest_start" \
-      zsh-users/zsh-autosuggestions \
-  blockf atpull'zinit creinstall -q .' \
+  blockf atpull'zinit creinstall -q .; rm **/_pipenv' \
       zsh-users/zsh-completions
 
+
+# ===================== Other Plugins ======================
+
+zinit wait lucid light-mode for \
+    MichaelAquilina/zsh-you-should-use

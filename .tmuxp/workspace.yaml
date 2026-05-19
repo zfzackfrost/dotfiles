@@ -9,7 +9,11 @@ windows:
     panes:
       - focus: true
       -
-    window_name: term
+    window_name: term1
+  - layout: even-horizontal
+    panes:
+      -
+    window_name: term2
   - panes:
       - lf
     window_name: files
